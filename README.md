@@ -1,4 +1,4 @@
-# Business-system
+# Business system
 
 A project using java in order to simulate some of the basic activities of a shop like the filling of invoices and the calculation of product prices.
 
