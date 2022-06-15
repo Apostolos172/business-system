@@ -34,7 +34,7 @@ public class Prices_GUI extends JFrame {
 	private JButton deletebtn;
 	
 	public Prices_GUI(Main_GUI main_GUI) throws ClassNotFoundException, SQLException  {
-		super("Χρώματα Βαδραχάνης");
+		super("Χρώματα");
 		this.main_GUI = main_GUI;
 		main_GUI.setVisible(false);
 		this.createTheStockList();
@@ -119,16 +119,16 @@ public class Prices_GUI extends JFrame {
 		GUI.setPadding(westPanel);
 		westPanel.setLayout(new BoxLayout(westPanel,BoxLayout.Y_AXIS));
 
-		infoLabel1 = new JLabel("Επωνυμία επιχείρησης: Χρώματα Βαδραχάνης");
+		infoLabel1 = new JLabel("Επωνυμία επιχείρησης: Χρώματα");
 		infoLabel1.setFont(serifFont);
 		infoLabel1.setForeground(Color.white);
-		infoLabel2 = new JLabel("Τηλ. 24670 29159");
+		infoLabel2 = new JLabel("Τηλ. 24670 24670");
 		infoLabel2.setFont(serifFont);
 		infoLabel2.setForeground(Color.white);
-		infoLabel3 = new JLabel("Διεύθυνση: Μεγάλου Αλεξάνδρου 39");
+		infoLabel3 = new JLabel("Διεύθυνση: τάδε");
 		infoLabel3.setFont(serifFont);
 		infoLabel3.setForeground(Color.white);
-		infoLabel4 = new JLabel("Περιοχή: Καστοριά, 52100");
+		infoLabel4 = new JLabel("Περιοχή: Θεσσαλονίκη, 11111");
 		infoLabel4.setFont(serifFont);
 		infoLabel4.setForeground(Color.white);
 		writeInfoInFile = new JButton("<html>Αποθήκευσε τις πληροφορίες σε <br>αρχείο στην επιφάνεια εργασίας</html>");
