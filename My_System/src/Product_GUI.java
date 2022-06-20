@@ -37,7 +37,7 @@ public class Product_GUI extends JFrame {
 	private JButton addToStockListbtn;
 	
 	public Product_GUI(double price) throws ClassNotFoundException, SQLException  {
-		super("Χρώματα Βαδραχάνης");
+		super("Χρώματα");
 		this.price = price;
 		this.createTheStockList();
 		makeFrame();

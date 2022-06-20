@@ -25,7 +25,7 @@ public class PricesBig_GUI extends JFrame {
 	private JButton deletebtn;
 	
 	public PricesBig_GUI() throws ClassNotFoundException, SQLException  {
-		super("Χρώματα Βαδραχάνης");
+		super("Χρώματα");
 		this.createTheStockList();
 		makeFrame();
 	}

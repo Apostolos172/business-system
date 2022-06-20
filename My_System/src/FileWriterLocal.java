@@ -10,7 +10,9 @@ public class FileWriterLocal {
 		try
 		{
 			String no = "C:\\Users\\user\\Desktop\\information of company.txt";
-			File f = new File("C:\\Users\\apost\\OneDrive\\Desktop\\information_of_company.txt");
+			String path = "information_of_company.txt";
+			path = "C:\\Users\\apost\\OneDrive\\Υπολογιστής\\information_of_company.txt";
+			File f = new File(path);
 			FileWriter writer = new FileWriter(f);
 			writer.write("Επωνυμία επιχείρησης: Χρώματα\n");
 			writer.write("Τηλ. 24670 24670\n");

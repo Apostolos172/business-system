@@ -199,7 +199,7 @@ public class Costs_GUI extends JFrame{
 		profitLabel.setFont(serifFont);
 		profitLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		profitTxt = new JTextField("30");
+		profitTxt = new JTextField("10");
 		profitTxt.setFont(serifFontBig);
 		GUI.setPaddingAtJTextField(profitTxt);
 		
