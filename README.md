@@ -14,4 +14,5 @@ A project using java in order to simulate some of the basic activities of a shop
 ![invoice window](https://github.com/Apostolos172/business-system/blob/b17275c03a03a92792e99e05fbeda2ad39ca8d83/My_System/screenshots/invoice.png)
 ![product window](https://github.com/Apostolos172/business-system/blob/b17275c03a03a92792e99e05fbeda2ad39ca8d83/My_System/screenshots/product.png)
 
-[![system](https://img.youtube.com/vi/w82Q6rZi_18/0.jpg)](https://www.youtube.com/watch?v=w82Q6rZi_18)
+[![system](https://github.com/Apostolos172/business-system/blob/608b8463a480cc5abe22203198c05178cca308d4/My_System/screenshots/systemPlay.png)](https://www.youtube.com/watch?v=w82Q6rZi_18)
+<!-- https://img.youtube.com/vi/w82Q6rZi_18/0.jpg -->
