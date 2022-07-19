@@ -20,20 +20,26 @@ public class Main {
 		ConnectionWithDatabase conn = new ConnectionWithDatabase("jdbc:sqlite:" + path);
 
 		System.out.println(conn.getTheDoubleValueOfAFieldOfARow("price", "name", "'superPlastic'", "product"));
-		System.out.println("-----------------------------");
+		hr();
 	    for(String name: conn.getThisColumn("name", "product"))
 	    	System.out.println(name);
-		System.out.println("-----------------------------");
+		hr();
 	    StockList list = new StockList();
 	    //list.getInfoOfTheProductWithThisName("superPlastic");
 	    for(String name: list.getTheNamesOfProducts())
 	    	System.out.println(name);
-		System.out.println("-----------------------------");
+		hr();
 		System.out.println(list.getInfoOfTheProductWithThisName("'superPlastic'"));
-		System.out.println("-----------------------------");
+		hr();
 
 	    for(Product product: list.getProducts())
 	    	System.out.println(product.getData3());
+	}
+	
+	public static void hr() {
+		// print dashed horizontal ruler
+		
+		System.out.println("-----------------------------");
 	}
 
 }
