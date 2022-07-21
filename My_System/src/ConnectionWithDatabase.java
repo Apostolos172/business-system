@@ -4,8 +4,7 @@ import java.util.ArrayList;
 public class ConnectionWithDatabase {
 	 
 	private String driver = "org.sqlite.JDBC";
-	private String url    = "jdbc:sqlite:C:\\Users\\user\\Desktop\\ΠΑ.ΜΑΚ\\ΕΦΑΡΜΟΣΜΕΝΗ\\3ο εξάμηνο\\βάσεις δεδομένων 1\\εργαστήριο\\Lab_13\\Lab_12\\cdbase.db";
-	//private String url    = "jdbc:sqlite:test.sqlite";
+	private String url    = "jdbc:sqlite:C:\\cdbase.db"; //for demonstration purposes
 	
 	private java.sql.Connection sqliteConnection = null;
 	
@@ -14,27 +13,6 @@ public class ConnectionWithDatabase {
 	    Class.forName(driver); // load sqlite driver
 	    this.url = url;
 	    sqliteConnection = DriverManager.getConnection(this.url, "", "");
-	}
-	
-	public void executeStatement(String query) throws SQLException
-	{
-		//query = "SELECT ctitle FROM cd";
-		
-		Statement  statement;
-
-	    statement = sqliteConnection.createStatement () ;
-
-	    ResultSet rs = statement.executeQuery (query) ;
- 
-	    while (rs.next ())
-	    {
-	    	System.out.println(rs.getString("cid"));
-	    	System.out.println(rs.getString("ctitle"));
-	    	System.out.println(rs.getString("year")+"\n");
-	    }
-
-	    rs.close () ;
-	    
 	}
 	
 	public ArrayList<String> getThisColumn(String columnName, String table) throws SQLException
@@ -60,7 +38,7 @@ public class ConnectionWithDatabase {
 	
 	public void insertARow(String table, ArrayList<String> columns, ArrayList<String> fields) throws SQLException
 	{
-		/*
+		/* 	execution of a query like the following
 		 *  INSERT 
 			INTO product (name, price, description)
 			VALUES ("superAcrylic", 8, "εξωτερικού χώρου");

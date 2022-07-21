@@ -11,8 +11,7 @@ public class StockList {
 
 	public StockList() throws ClassNotFoundException, SQLException
 	{
-		//conn = new ConnectionWithDatabase("jdbc:sqlite:C:\\Users\\user\\Desktop\\-\\applications\\My_System\\shop.db");
-		String path = "C:\\backups\\dbs\\shop.db";
+		String path = "";
 		path = "C:\\databases\\shop.db";
 		conn = new ConnectionWithDatabase("jdbc:sqlite:" + path);
 		this.products = new ArrayList<>();
