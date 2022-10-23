@@ -1,9 +1,17 @@
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class AreYouSure_GUI extends JFrame{
 	private JPanel panel,centralPanel,northPanel;
 	private JButton buttonOK;
@@ -17,7 +25,7 @@ public class AreYouSure_GUI extends JFrame{
 	
 	public AreYouSure_GUI(String message,String product)
 	{
-		super("Μήνυμα επιβεβαίωσης");
+		super("ΞΞ®Ξ½Ο…ΞΌΞ± ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚");
 		this.message = message;
 		this.product = product;
 		makeFrame();
@@ -53,7 +61,7 @@ public class AreYouSure_GUI extends JFrame{
 		buttonListener OKlistener = new buttonListener();
 		buttonOK.addActionListener(OKlistener);
 		
-		buttonCancel = new JButton("Άκυρο");
+		buttonCancel = new JButton("Ξ†ΞΊΟ…ΟΞΏ");
 		buttonCancel.setFont(serifFont);
 		centralPanel.add(buttonCancel);
 		buttonListener buttonCancellistener = new buttonListener();
@@ -81,9 +89,8 @@ public class AreYouSure_GUI extends JFrame{
 			try {
 				StockList menu = new StockList();
 				menu.deleteProductFromStockList(product);
-				GUI.showConfirmationWindow("Το προϊόν αφαιρέθηκε από τον κατάλογο", 400);
+				GUI.showConfirmationWindow("Ξ¤ΞΏ Ο€ΟΞΏΟΟΞ½ Ξ±Ο†Ξ±ΞΉΟΞ­ΞΈΞ·ΞΊΞµ Ξ±Ο€Ο Ο„ΞΏΞ½ ΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏ", 400);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -103,7 +110,6 @@ public class AreYouSure_GUI extends JFrame{
 			try {
 				acceptedConfirmation(product);
 			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			setVisible(false); 

@@ -1,12 +1,21 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
 public class Product_GUI extends JFrame {
 	private JPanel mainPanel, centralPanel,centralCentralPanel;
 	//fonts
@@ -37,7 +46,7 @@ public class Product_GUI extends JFrame {
 	private JButton addToStockListbtn;
 	
 	public Product_GUI(double price) throws ClassNotFoundException, SQLException  {
-		super("Χρώματα");
+		super("Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		this.price = price;
 		this.createTheStockList();
 		makeFrame();
@@ -83,13 +92,13 @@ public class Product_GUI extends JFrame {
 		centralCentralPanel.setLayout(new GridLayout(5,2,100,10));
         
 		//north
-		instructionsLabel = new JLabel("Συμπλήρωσε αναλόγως τα ακόλουθα πεδία και έπειτα"
-				+ " πίεσε το πλήκτρο για την προσθήκη του προϊόντος στον τιμοκατάλογο.");
+		instructionsLabel = new JLabel("Ξ£Ο…ΞΌΟ€Ξ»Ξ®ΟΟ‰ΟƒΞµ Ξ±Ξ½Ξ±Ξ»ΟΞ³Ο‰Ο‚ Ο„Ξ± Ξ±ΞΊΟΞ»ΞΏΟ…ΞΈΞ± Ο€ΞµΞ΄Ξ―Ξ± ΞΊΞ±ΞΉ Ξ­Ο€ΞµΞΉΟ„Ξ±"
+				+ " Ο€Ξ―ΞµΟƒΞµ Ο„ΞΏ Ο€Ξ»Ξ®ΞΊΟ„ΟΞΏ Ξ³ΞΉΞ± Ο„Ξ·Ξ½ Ο€ΟΞΏΟƒΞΈΞ®ΞΊΞ· Ο„ΞΏΟ… Ο€ΟΞΏΟΟΞ½Ο„ΞΏΟ‚ ΟƒΟ„ΞΏΞ½ Ο„ΞΉΞΌΞΏΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏ.");
 		instructionsLabel.setFont(serifFont); 
 		centralNorthPanel.add(instructionsLabel,BorderLayout.NORTH);
 		
 		//central
-		nameLabel = new JLabel("Δώσε το όνομα του προϊόντος:");
+		nameLabel = new JLabel("Ξ”ΟΟƒΞµ Ο„ΞΏ ΟΞ½ΞΏΞΌΞ± Ο„ΞΏΟ… Ο€ΟΞΏΟΟΞ½Ο„ΞΏΟ‚:");
 		nameLabel.setFont(serifFont);
 		nameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -97,7 +106,7 @@ public class Product_GUI extends JFrame {
 		nameTxt.setFont(serifFontBig);
 		GUI.setPaddingAtJTextField(nameTxt);
 		
-		priceLabel = new JLabel("Τελική τιμή:");
+		priceLabel = new JLabel("Ξ¤ΞµΞ»ΞΉΞΊΞ® Ο„ΞΉΞΌΞ®:");
 		priceLabel.setFont(serifFont);
 		priceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -106,7 +115,7 @@ public class Product_GUI extends JFrame {
 		GUI.setPaddingAtJTextField(priceTxt);
 		priceTxt.setText("" + this.price);
 		
-		descriptionLabel = new JLabel("Περιγραφή προϊόντος:");
+		descriptionLabel = new JLabel("Ξ ΞµΟΞΉΞ³ΟΞ±Ο†Ξ® Ο€ΟΞΏΟΟΞ½Ο„ΞΏΟ‚:");
 		descriptionLabel.setFont(serifFont);
 		descriptionLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -114,7 +123,7 @@ public class Product_GUI extends JFrame {
 		descriptionTxt.setFont(serifFontBig);
 		GUI.setPaddingAtJTextField(descriptionTxt);
 		
-		countableLabel = new JLabel("Είδος συσκευασίας:"); 
+		countableLabel = new JLabel("Ξ•Ξ―Ξ΄ΞΏΟ‚ ΟƒΟ…ΟƒΞΊΞµΟ…Ξ±ΟƒΞ―Ξ±Ο‚:"); 
 		countableLabel.setFont(serifFont);
 		countableLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -122,7 +131,7 @@ public class Product_GUI extends JFrame {
 		countableTxt.setFont(serifFontBig);
 		GUI.setPaddingAtJTextField(countableTxt);
 		
-		categoryLabel = new JLabel("Σε ποια κατηγορία ανήκει:");
+		categoryLabel = new JLabel("Ξ£Ξµ Ο€ΞΏΞΉΞ± ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ± Ξ±Ξ½Ξ®ΞΊΞµΞΉ:");
 		categoryLabel.setFont(serifFont);
 		categoryLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 	 
@@ -145,7 +154,7 @@ public class Product_GUI extends JFrame {
         
         //centralSouthPanel
         
-		addToStockListbtn = new JButton("Προσθήκη");
+		addToStockListbtn = new JButton("Ξ ΟΞΏΟƒΞΈΞ®ΞΊΞ·");
 		addToStockListbtn.setFont(serifFont);
 		
 		addToStockListbtnListener addToStockListbtnlistener = new addToStockListbtnListener();
@@ -176,7 +185,7 @@ public class Product_GUI extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 				}
-				GUI.showConfirmationWindow("Το προϊόν προστέθηκε στον κατάλογο.", 400);
+				GUI.showConfirmationWindow("Ξ¤ΞΏ Ο€ΟΞΏΟΟΞ½ Ο€ΟΞΏΟƒΟ„Ξ­ΞΈΞ·ΞΊΞµ ΟƒΟ„ΞΏΞ½ ΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏ.", 400);
 		}
 	}
 	

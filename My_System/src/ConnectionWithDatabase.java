@@ -1,4 +1,7 @@
-import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ConnectionWithDatabase {
@@ -41,7 +44,7 @@ public class ConnectionWithDatabase {
 		/* 	execution of a query like the following
 		 *  INSERT 
 			INTO product (name, price, description)
-			VALUES ("superAcrylic", 8, "εξωτερικού χώρου");
+			VALUES ("superAcrylic", 8, "οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½");
 		 */
 		
 		String stringOfColumns, stringOfFields;

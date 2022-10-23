@@ -1,16 +1,30 @@
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.sql.SQLException;
-
-import javax.swing.*;
-
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 /**
- * Η κλάση της οποίας τα αντικείμενα που θα δημιουργηθούν θα αποτελούν μια φόρμα προκειμένου
- * ο χρήστης να μπορεί να υπολογίσει την τελική τιμή για κάποιο προϊόν και έπειτα να το κρατήσει 
- * και στη βάση με τα στοιχεία της επιχείρησης αν θελήσει
+ * Ξ— ΞΊΞ»Ξ¬ΟƒΞ· Ο„Ξ·Ο‚ ΞΏΟ€ΞΏΞ―Ξ±Ο‚ Ο„Ξ± Ξ±Ξ½Ο„ΞΉΞΊΞµΞ―ΞΌΞµΞ½Ξ± Ο€ΞΏΟ… ΞΈΞ± Ξ΄Ξ·ΞΌΞΉΞΏΟ…ΟΞ³Ξ·ΞΈΞΏΟΞ½ ΞΈΞ± Ξ±Ο€ΞΏΟ„ΞµΞ»ΞΏΟΞ½ ΞΌΞΉΞ± Ο†ΟΟΞΌΞ± Ο€ΟΞΏΞΊΞµΞΉΞΌΞ­Ξ½ΞΏΟ…
+ * ΞΏ Ο‡ΟΞ®ΟƒΟ„Ξ·Ο‚ Ξ½Ξ± ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± Ο…Ο€ΞΏΞ»ΞΏΞ³Ξ―ΟƒΞµΞΉ Ο„Ξ·Ξ½ Ο„ΞµΞ»ΞΉΞΊΞ® Ο„ΞΉΞΌΞ® Ξ³ΞΉΞ± ΞΊΞ¬Ο€ΞΏΞΉΞΏ Ο€ΟΞΏΟΟΞ½ ΞΊΞ±ΞΉ Ξ­Ο€ΞµΞΉΟ„Ξ± Ξ½Ξ± Ο„ΞΏ ΞΊΟΞ±Ο„Ξ®ΟƒΞµΞΉ 
+ * ΞΊΞ±ΞΉ ΟƒΟ„Ξ· Ξ²Ξ¬ΟƒΞ· ΞΌΞµ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ο„Ξ·Ο‚ ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚ Ξ±Ξ½ ΞΈΞµΞ»Ξ®ΟƒΞµΞΉ
  */
+@SuppressWarnings("serial")
 public class Costs_GUI extends JFrame{
 	
 	private JPanel mainPanel,northPanel,southPanel,westPanel,centralPanel;
@@ -33,7 +47,7 @@ public class Costs_GUI extends JFrame{
 	private Main_GUI main_GUI;
 	
 	public Costs_GUI(Main_GUI main_GUI) {
-		super("Χρώματα");
+		super("Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		this.main_GUI = main_GUI;
 		main_GUI.setVisible(false);
 		makeFrame();
@@ -104,27 +118,27 @@ public class Costs_GUI extends JFrame{
 		westPanel.setLayout(new BoxLayout(westPanel,BoxLayout.Y_AXIS));
 		//westPanel.setLayout(new FlowLayout());
 
-		infoLabel1 = new JLabel("Επωνυμία επιχείρησης: Χρώματα");
+		infoLabel1 = new JLabel("Ξ•Ο€Ο‰Ξ½Ο…ΞΌΞ―Ξ± ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚: Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		infoLabel1.setFont(serifFont);
 		infoLabel1.setForeground(Color.white);
-		infoLabel2 = new JLabel("Τηλ. 24670 24670");
+		infoLabel2 = new JLabel("Ξ¤Ξ·Ξ». 24670 24670");
 		infoLabel2.setFont(serifFont);
 		infoLabel2.setForeground(Color.white);
-		infoLabel3 = new JLabel("Διεύθυνση: τάδε");
+		infoLabel3 = new JLabel("Ξ”ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·: Ο„Ξ¬Ξ΄Ξµ");
 		infoLabel3.setFont(serifFont);
 		infoLabel3.setForeground(Color.white);
-		infoLabel4 = new JLabel("Περιοχή: Θεσσαλονίκη, 11111");
+		infoLabel4 = new JLabel("Ξ ΞµΟΞΉΞΏΟ‡Ξ®: ΞΞµΟƒΟƒΞ±Ξ»ΞΏΞ½Ξ―ΞΊΞ·, 11111");
 		infoLabel4.setFont(serifFont);
 		infoLabel4.setForeground(Color.white);
 		
-		writeInfoInFile = new JButton("<html>Αποθήκευσε τις πληροφορίες σε <br>αρχείο στην επιφάνεια εργασίας</html>");
+		writeInfoInFile = new JButton("<html>Ξ‘Ο€ΞΏΞΈΞ®ΞΊΞµΟ…ΟƒΞµ Ο„ΞΉΟ‚ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ ΟƒΞµ <br>Ξ±ΟΟ‡ΞµΞ―ΞΏ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚</html>");
 		writeInfoInFile.setFont(sansSerifFontSmall);
 		writeInfoInFile.setBackground(Color.green);
 		
 		writeInfoInFilebtnListener writeInfoInFilebtnlistener = new writeInfoInFilebtnListener();
 		writeInfoInFile.addActionListener(writeInfoInFilebtnlistener);
 		
-		btn1 = new JButton("Επιστροφή στην αρχική καρτέλα");
+		btn1 = new JButton("Ξ•Ο€ΞΉΟƒΟ„ΟΞΏΟ†Ξ® ΟƒΟ„Ξ·Ξ½ Ξ±ΟΟ‡ΞΉΞΊΞ® ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ±");
 		btn1.setFont(sansSerifFontSmall);
 		btnReturnListener btn1listener = new btnReturnListener();
 		btn1.addActionListener(btn1listener);
@@ -150,8 +164,8 @@ public class Costs_GUI extends JFrame{
 		centralPanel.setLayout(new BorderLayout(10,10));
 		
 		//north
-		instructionsLabel = new JLabel("Συμπλήρωσε αναλόγως τα ακόλουθα πεδία και έπειτα"
-				+ " πίεσε το πλήκτρο για την εμφάνιση της τελικής τιμής στο διπλανό του πλαίσιο");
+		instructionsLabel = new JLabel("Ξ£Ο…ΞΌΟ€Ξ»Ξ®ΟΟ‰ΟƒΞµ Ξ±Ξ½Ξ±Ξ»ΟΞ³Ο‰Ο‚ Ο„Ξ± Ξ±ΞΊΟΞ»ΞΏΟ…ΞΈΞ± Ο€ΞµΞ΄Ξ―Ξ± ΞΊΞ±ΞΉ Ξ­Ο€ΞµΞΉΟ„Ξ±"
+				+ " Ο€Ξ―ΞµΟƒΞµ Ο„ΞΏ Ο€Ξ»Ξ®ΞΊΟ„ΟΞΏ Ξ³ΞΉΞ± Ο„Ξ·Ξ½ ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ο„Ξ·Ο‚ Ο„ΞµΞ»ΞΉΞΊΞ®Ο‚ Ο„ΞΉΞΌΞ®Ο‚ ΟƒΟ„ΞΏ Ξ΄ΞΉΟ€Ξ»Ξ±Ξ½Ο Ο„ΞΏΟ… Ο€Ξ»Ξ±Ξ―ΟƒΞΉΞΏ");
 		instructionsLabel.setFont(serifFont); 
 		centralPanel.add(instructionsLabel,BorderLayout.NORTH);
 		
@@ -160,7 +174,7 @@ public class Costs_GUI extends JFrame{
 		centralCentralPanel.setLayout(new GridLayout(5,2,100,10));
 		GUI.setPadding(centralCentralPanel);
 		
-		initialPriceLabel = new JLabel("Δώσε την αρχική τιμή του προϊόντος:");
+		initialPriceLabel = new JLabel("Ξ”ΟΟƒΞµ Ο„Ξ·Ξ½ Ξ±ΟΟ‡ΞΉΞΊΞ® Ο„ΞΉΞΌΞ® Ο„ΞΏΟ… Ο€ΟΞΏΟΟΞ½Ο„ΞΏΟ‚:");
 		initialPriceLabel.setFont(serifFont);
 		initialPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -170,7 +184,7 @@ public class Costs_GUI extends JFrame{
 		initialPriceTxtFocus initialPriceTxtfocus = new initialPriceTxtFocus();
 		initialPriceTxt.addFocusListener(initialPriceTxtfocus);
 		
-		discountsLabel = new JLabel("Ποσοστά εκπτώσεων προμηθευτή:");
+		discountsLabel = new JLabel("Ξ ΞΏΟƒΞΏΟƒΟ„Ξ¬ ΞµΞΊΟ€Ο„ΟΟƒΞµΟ‰Ξ½ Ο€ΟΞΏΞΌΞ·ΞΈΞµΟ…Ο„Ξ®:");
 		discountsLabel.setFont(serifFont);
 		discountsLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -187,7 +201,7 @@ public class Costs_GUI extends JFrame{
 		discountsTxt4 = new JTextField("0",2);
 		discountsTxt4.setFont(serifFontBig);
 		
-		fareLabel = new JLabel("Ποσοστό ναύλου:");
+		fareLabel = new JLabel("Ξ ΞΏΟƒΞΏΟƒΟ„Ο Ξ½Ξ±ΟΞ»ΞΏΟ…:");
 		fareLabel.setFont(serifFont);
 		fareLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -195,7 +209,7 @@ public class Costs_GUI extends JFrame{
 		fareTxt.setFont(serifFontBig);
 		GUI.setPaddingAtJTextField(fareTxt);
 		
-		profitLabel = new JLabel("Ποσοστό κέρδους:"); 
+		profitLabel = new JLabel("Ξ ΞΏΟƒΞΏΟƒΟ„Ο ΞΊΞ­ΟΞ΄ΞΏΟ…Ο‚:"); 
 		profitLabel.setFont(serifFont);
 		profitLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -203,7 +217,7 @@ public class Costs_GUI extends JFrame{
 		profitTxt.setFont(serifFontBig);
 		GUI.setPaddingAtJTextField(profitTxt);
 		
-		FPALabel = new JLabel("Ποσοστό ΦΠΑ:");
+		FPALabel = new JLabel("Ξ ΞΏΟƒΞΏΟƒΟ„Ο Ξ¦Ξ Ξ‘:");
 		FPALabel.setFont(serifFont);
 		FPALabel.setHorizontalAlignment(SwingConstants.RIGHT);
 	 
@@ -232,14 +246,14 @@ public class Costs_GUI extends JFrame{
         //south
 		JPanel helpful = new JPanel();
 		
-		finalPricebtn = new JButton("Υπολόγισε τιμή προς πώληση");
+		finalPricebtn = new JButton("Ξ¥Ο€ΞΏΞ»ΟΞ³ΞΉΟƒΞµ Ο„ΞΉΞΌΞ® Ο€ΟΞΏΟ‚ Ο€ΟΞ»Ξ·ΟƒΞ·");
         finalPricebtn.setFont(serifFontBig);		
         helpful.add(finalPricebtn);
         
         finalPricebtnListener finalPricebtnlistener = new finalPricebtnListener();
         finalPricebtn.addActionListener(finalPricebtnlistener);
         
-        finalPriceTxt = new JTextField("τελική τιμή");
+        finalPriceTxt = new JTextField("Ο„ΞµΞ»ΞΉΞΊΞ® Ο„ΞΉΞΌΞ®");
         finalPriceTxt.setFont(serifFontBig);
         finalPriceTxt.setEditable(false);
         finalPriceTxt.setBackground(Color.yellow);
@@ -248,7 +262,7 @@ public class Costs_GUI extends JFrame{
 		        BorderFactory.createEmptyBorder(15, 15, 15, 15)));
         helpful.add(finalPriceTxt);
         
-        toStockListbtn = new JButton("Στον κατάλογο");
+        toStockListbtn = new JButton("Ξ£Ο„ΞΏΞ½ ΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏ");
         toStockListbtn.setFont(serifFontBig);
         helpful.add(toStockListbtn);
         
@@ -268,7 +282,7 @@ public class Costs_GUI extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			FileWriterLocal.writeInfo();
-			GUI.showConfirmationWindow("Το αρχείο βρίσκεται στην επιφάνεια εργασίας, δείτε το.", 500);
+			GUI.showConfirmationWindow("Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ξ²ΟΞ―ΟƒΞΊΞµΟ„Ξ±ΞΉ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚, Ξ΄ΞµΞ―Ο„Ξµ Ο„ΞΏ.", 500);
 		}
 		
 	}

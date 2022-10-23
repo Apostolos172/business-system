@@ -1,12 +1,24 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
 public class PricesBig_GUI extends JFrame {
 	private JPanel mainPanel, centralPanel,centralCentralPanel;
 	//fonts
@@ -25,7 +37,7 @@ public class PricesBig_GUI extends JFrame {
 	private JButton deletebtn;
 	
 	public PricesBig_GUI() throws ClassNotFoundException, SQLException  {
-		super("Χρώματα");
+		super("Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		this.createTheStockList();
 		makeFrame();
 	}
@@ -70,7 +82,7 @@ public class PricesBig_GUI extends JFrame {
 		centralCentralPanel.setLayout(new GridLayout(1,3,10,10));
         
 		//centralNorthPanel
-		search = new JButton("Αναζήτησε προϊόν");
+		search = new JButton("Ξ‘Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞµ Ο€ΟΞΏΟΟΞ½");
 		search.setFont(serifFont);
 		searchListener searchlistener = new searchListener();
 		search.addActionListener(searchlistener);
@@ -92,7 +104,7 @@ public class PricesBig_GUI extends JFrame {
 		//centralCentralPanel
         areaProducts = new JTextArea();
         areaProducts.setFont(sansserifFontMedium);
-        areaProducts.append("Προϊόντα \n\n");
+        areaProducts.append("Ξ ΟΞΏΟΟΞ½Ο„Ξ± \n\n");
         
         for(Product product: menu.getProducts())
             areaProducts.append(product.getName() + "\n");
@@ -105,7 +117,7 @@ public class PricesBig_GUI extends JFrame {
         
         areaInfo = new JTextArea();
         areaInfo.setFont(sansserifFontMedium);
-        areaInfo.append("Πληροφορίες \n\n");
+        areaInfo.append("Ξ Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ \n\n");
         
         for(Product product: menu.getProducts())
         	areaInfo.append(product.getDescription() + "\n");
@@ -118,10 +130,10 @@ public class PricesBig_GUI extends JFrame {
         
         areaPrices = new JTextArea();
         areaPrices.setFont(sansserifFontMedium);
-        areaPrices.append("Τιμές \n\n");
+        areaPrices.append("Ξ¤ΞΉΞΌΞ­Ο‚ \n\n");
         
         for(Product product: menu.getProducts())
-        	areaPrices.append(product.getFinalPrice() + " ευρώ \n");
+        	areaPrices.append(product.getFinalPrice() + " ΞµΟ…ΟΟ \n");
         
         areaPrices.setEditable(false);
         GUI.setPaddingAtJTextArea(areaPrices);
@@ -133,7 +145,7 @@ public class PricesBig_GUI extends JFrame {
         
         //centralSouthPanel
         
-		productFoundLabel = new JLabel("Το προϊόν");
+		productFoundLabel = new JLabel("Ξ¤ΞΏ Ο€ΟΞΏΟΟΞ½");
 		productFoundLabel.setFont(serifFont);
 		
 		productFoundField = new JTextField(40);
@@ -142,7 +154,7 @@ public class PricesBig_GUI extends JFrame {
 		productFoundField.setEditable(false);
 		productFoundField.setBackground(Color.green);
 		
-		deletebtn = new JButton("Διέγραψέ το");
+		deletebtn = new JButton("Ξ”ΞΉΞ­Ξ³ΟΞ±ΟΞ­ Ο„ΞΏ");
 		deletebtnListener deletebtnlistener = new deletebtnListener();
 		deletebtn.addActionListener(deletebtnlistener);
 		
@@ -168,9 +180,8 @@ public class PricesBig_GUI extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				menu.deleteProductFromStockList(product.getText());
-				GUI.showConfirmationWindow("Το προϊόν αφαιρέθηκε από τον κατάλογο", 400);
+				GUI.showConfirmationWindow("Ξ¤ΞΏ Ο€ΟΞΏΟΟΞ½ Ξ±Ο†Ξ±ΞΉΟΞ­ΞΈΞ·ΞΊΞµ Ξ±Ο€Ο Ο„ΞΏΞ½ ΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏ", 400);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -231,7 +242,6 @@ public class PricesBig_GUI extends JFrame {
 				info = menu.getInfoOfTheProductWithThisName("'" + nameOfProduct + "'");
 				productFoundField.setText(info);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}

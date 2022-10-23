@@ -23,7 +23,7 @@ public class Product {
 	
 	public String getData3()
 	{
-		return "" + name + " " + finalPrice + "ευρώ " + description;
+		return "" + name + " " + finalPrice + "ΞµΟ…ΟΟ " + description;
 	}
 	
 	public Product(double finalPrice, int quantity)

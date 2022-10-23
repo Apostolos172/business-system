@@ -1,160 +1,166 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import org.apache.html.dom.HTMLBuilder;
 import org.xml.sax.SAXException;
 
 /**
- * Η κλάση της οποίας τα αντικείμενα που θα δημιουργηθούν θα αποτελούν μια ενημερωτική, απλή 
- * καρτέλα για τα περιεχόμενα του συστήματος, οι λεπτομέρειες φαίνονται στην επίσημη τεκμηρίωση, 
- * εδώ.
+ * Ξ— ΞΊΞ»Ξ¬ΟƒΞ· Ο„Ξ·Ο‚ ΞΏΟ€ΞΏΞ―Ξ±Ο‚ Ο„Ξ± Ξ±Ξ½Ο„ΞΉΞΊΞµΞ―ΞΌΞµΞ½Ξ± Ο€ΞΏΟ… ΞΈΞ± Ξ΄Ξ·ΞΌΞΉΞΏΟ…ΟΞ³Ξ·ΞΈΞΏΟΞ½ ΞΈΞ± Ξ±Ο€ΞΏΟ„ΞµΞ»ΞΏΟΞ½ ΞΌΞΉΞ±
+ * ΞµΞ½Ξ·ΞΌΞµΟΟ‰Ο„ΞΉΞΊΞ®, Ξ±Ο€Ξ»Ξ® ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ± Ξ³ΞΉΞ± Ο„Ξ± Ο€ΞµΟΞΉΞµΟ‡ΟΞΌΞµΞ½Ξ± Ο„ΞΏΟ… ΟƒΟ…ΟƒΟ„Ξ®ΞΌΞ±Ο„ΞΏΟ‚, ΞΏΞΉ Ξ»ΞµΟ€Ο„ΞΏΞΌΞ­ΟΞµΞΉΞµΟ‚
+ * Ο†Ξ±Ξ―Ξ½ΞΏΞ½Ο„Ξ±ΞΉ ΟƒΟ„Ξ·Ξ½ ΞµΟ€Ξ―ΟƒΞ·ΞΌΞ· Ο„ΞµΞΊΞΌΞ·ΟΞ―Ο‰ΟƒΞ·, ΞµΞ΄Ο.
  */
+@SuppressWarnings("serial")
 public class General_GUI extends JFrame {
-	private JPanel mainPanel,northPanel,southPanel,westPanel,centralPanel;
-	//fonts
-	Font serifFontBig,serifFont,serifFontSmall,sansSerifFontSmall,sansserifFontMedium;
-	//northPanel
+	private JPanel mainPanel, northPanel, southPanel, westPanel, centralPanel;
+	// fonts
+	Font serifFontBig, serifFont, serifFontSmall, sansSerifFontSmall, sansserifFontMedium;
+	// northPanel
 	private ImageIcon image;
 	private JLabel imageLabel;
-	//southPanel
-	private JLabel footerLabel1,footerLabel2;
-	//westPanel
-	private JLabel infoLabel1,infoLabel2,infoLabel3,infoLabel4;
+	// southPanel
+	private JLabel footerLabel1, footerLabel2;
+	// westPanel
+	private JLabel infoLabel1, infoLabel2, infoLabel3, infoLabel4;
 	private JButton writeInfoInFile, visitSite, btnret;
-	//centralPanel
+	// centralPanel
 	private JLabel labelHtml;
 	private JTextArea area;
-	
+
 	private Main_GUI main_GUI;
-	
-	public General_GUI(Main_GUI main_GUI)  {
-		super("Χρώματα");
+
+	public General_GUI(Main_GUI main_GUI) {
+		super("Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		this.main_GUI = main_GUI;
 		main_GUI.setVisible(false);
 		makeFrame();
 	}
-	
+
 	public void makeFrame() {
-		
+
 		makeMyFonts();
-		
-		mainPanel = new JPanel(new BorderLayout(20,20));
-		
+
+		mainPanel = new JPanel(new BorderLayout(20, 20));
+
 		makeNorthPanel();
 		makeSouthPanel();
 		makeWestPanel();
 		makeCentralPanel();
-		
+
 		mainPanel.setBackground(Color.green);
 		mainPanel.setBackground(Color.black);
-		
-        this.setContentPane(mainPanel);
-		
-        GUI.setPadding(mainPanel);
+
+		this.setContentPane(mainPanel);
+
+		GUI.setPadding(mainPanel);
 		GUI.setSizeOfTheWindow(this);
-		
+
 		this.setResizable(false);
 		this.setVisible(true);
 	}
 
-	public void makeHtmlPage()
-	{
+	public void makeHtmlPage() {
 		HTMLBuilder html = new HTMLBuilder();
-		
+
 		try {
 			html.startDocument();
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		try {
 			html.endDocument();
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	public void makeNorthPanel()
-	{
+
+	public void makeNorthPanel() {
 		northPanel = new JPanel();
 		GUI.setPadding(northPanel);
-		
+
 		image = new ImageIcon("logo.png");
-        imageLabel = new JLabel(image);
-        northPanel.add(imageLabel);
-        
-        northPanel.setBackground(Color.cyan);
-        
-        mainPanel.add(northPanel,BorderLayout.NORTH);
+		imageLabel = new JLabel(image);
+		northPanel.add(imageLabel);
+
+		northPanel.setBackground(Color.cyan);
+
+		mainPanel.add(northPanel, BorderLayout.NORTH);
 	}
-	
-	public void makeSouthPanel()
-	{
+
+	public void makeSouthPanel() {
 		southPanel = new JPanel();
 		GUI.setPadding(southPanel);
-		southPanel.setLayout(new BoxLayout(southPanel,BoxLayout.Y_AXIS));
+		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
 		southPanel.setAlignmentY(CENTER_ALIGNMENT);
 		southPanel.setAlignmentX(CENTER_ALIGNMENT);
-		
+
 		footerLabel1 = new JLabel("Designed by Tolis' s group");
 		footerLabel1.setFont(serifFontSmall);
 		footerLabel2 = new JLabel("Copyright 2020");
 		footerLabel2.setFont(serifFontSmall);
-		 
-        southPanel.add(footerLabel1);
-        southPanel.add(footerLabel2);
-		
-        southPanel.setBackground(Color.cyan);
-        
-        mainPanel.add(southPanel,BorderLayout.SOUTH);
+
+		southPanel.add(footerLabel1);
+		southPanel.add(footerLabel2);
+
+		southPanel.setBackground(Color.cyan);
+
+		mainPanel.add(southPanel, BorderLayout.SOUTH);
 	}
-	
-	public void makeWestPanel()
-	{
+
+	public void makeWestPanel() {
 		westPanel = new JPanel();
 		GUI.setPadding(westPanel);
-		westPanel.setLayout(new BoxLayout(westPanel,BoxLayout.Y_AXIS));
+		westPanel.setLayout(new BoxLayout(westPanel, BoxLayout.Y_AXIS));
 
-		infoLabel1 = new JLabel("Επωνυμία επιχείρησης: Χρώματα");
+		infoLabel1 = new JLabel("Ξ•Ο€Ο‰Ξ½Ο…ΞΌΞ―Ξ± ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚: Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		infoLabel1.setFont(serifFont);
 		infoLabel1.setForeground(Color.white);
-		infoLabel2 = new JLabel("Τηλ. 24670 24670");
+		infoLabel2 = new JLabel("Ξ¤Ξ·Ξ». 24670 24670");
 		infoLabel2.setFont(serifFont);
 		infoLabel2.setForeground(Color.white);
-		infoLabel3 = new JLabel("Διεύθυνση: τάδε");
+		infoLabel3 = new JLabel("Ξ”ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·: Ο„Ξ¬Ξ΄Ξµ");
 		infoLabel3.setFont(serifFont);
 		infoLabel3.setForeground(Color.white);
-		infoLabel4 = new JLabel("Περιοχή: Θεσσαλονίκη, 11111");
+		infoLabel4 = new JLabel("Ξ ΞµΟΞΉΞΏΟ‡Ξ®: ΞΞµΟƒΟƒΞ±Ξ»ΞΏΞ½Ξ―ΞΊΞ·, 11111");
 		infoLabel4.setFont(serifFont);
 		infoLabel4.setForeground(Color.white);
-		writeInfoInFile = new JButton("<html>Αποθήκευσε τις πληροφορίες σε <br>αρχείο στην επιφάνεια εργασίας</html>");
+		writeInfoInFile = new JButton("<html>Ξ‘Ο€ΞΏΞΈΞ®ΞΊΞµΟ…ΟƒΞµ Ο„ΞΉΟ‚ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ ΟƒΞµ <br>Ξ±ΟΟ‡ΞµΞ―ΞΏ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚</html>");
 		writeInfoInFile.setFont(sansSerifFontSmall);
 		writeInfoInFile.setBackground(Color.green);
-		
+
 		writeInfoInFilebtnListener writeInfoInFilebtnlistener = new writeInfoInFilebtnListener();
 		writeInfoInFile.addActionListener(writeInfoInFilebtnlistener);
-		
-		visitSite = new JButton("<html>Επισκέψου την ιστοσελίδα</html>");
+
+		visitSite = new JButton("<html>Ξ•Ο€ΞΉΟƒΞΊΞ­ΟΞΏΟ… Ο„Ξ·Ξ½ ΞΉΟƒΟ„ΞΏΟƒΞµΞ»Ξ―Ξ΄Ξ±</html>");
 		visitSite.setFont(sansSerifFontSmall);
 		visitSite.setBackground(Color.magenta);
-		
+
 		visitSiteListener visitSitelistener = new visitSiteListener();
 		visitSite.addActionListener(visitSitelistener);
-		
-		btnret = new JButton("Επιστροφή στην αρχική καρτέλα");
+
+		btnret = new JButton("Ξ•Ο€ΞΉΟƒΟ„ΟΞΏΟ†Ξ® ΟƒΟ„Ξ·Ξ½ Ξ±ΟΟ‡ΞΉΞΊΞ® ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ±");
 		btnret.setFont(sansSerifFontSmall);
 		btnReturnListener btn1listener = new btnReturnListener();
 		btnret.addActionListener(btn1listener);
-		
+
 		westPanel.add(infoLabel1);
 		westPanel.add(infoLabel2);
 		westPanel.add(infoLabel3);
@@ -165,106 +171,92 @@ public class General_GUI extends JFrame {
 		westPanel.add(visitSite);
 		westPanel.add(new JLabel("\n"));
 		westPanel.add(btnret);
-		
+
 		westPanel.setBackground(Color.gray);
-        
-        mainPanel.add(westPanel,BorderLayout.WEST);
+
+		mainPanel.add(westPanel, BorderLayout.WEST);
 	}
-	
-	public void makeCentralPanel() 
-	{
+
+	public void makeCentralPanel() {
 		centralPanel = new JPanel();
 		GUI.setPadding(centralPanel);
-		centralPanel.setLayout(new GridLayout(2,1,10,10));
-        
-        labelHtml = new JLabel("<html>"
-        		+ "<p><strong>Περιεχόμενα εφαρμογής</strong></p>"
-        		+ "<ol>"
-        		+ "<li>Αρχική σελίδα</li>"
-        		+ "<li>Κοστολόγηση</li>"
-        		+ "<li>Τιμολόγιο</li>"
-        		+ "<li>Τιμοκατάλογος</li>"
-        		+ "<li>Προμηθευτές</li>"
-        		+ "<li>Αποθέματα</li>"
-        		+ "<li>Γενικά</li>"
-        		+ "</ol>"
-        		+ "</html>");
-        GUI.setPaddingAtJLabel(labelHtml);
-        
-        area = new JTextArea();
-        area.append(""
-        		+ "Στην αρχική σελίδα πλοηγήσε στις διάφορες δυνατότητες του συστήματος, καθώς υπάρχουν και τα \n"
-        		+ "στοιχεία της επιχείρησης τα οποία δύνανται να αποθηκευτούν σε αρχείο. Επιλέγοντας κοστολόγηση \n"
-        		+ "ανοίγει καρτέλα στην οποία μπορείς να βγάλεις τιμές για τα προϊόντα της επιχείρησης. Στην \n"
-        		+ "καρτέλα τιμολόγιο οργανώνεις απόλυτα και εύκολα τα απαραίτητα στοιχεία για την έκδοση ενός \n"
-        		+ "τιμολογίου. Στον τιμοκατάλογο μπορείς να βρεις τα προϊόντα της επιχείρησης. Στους προμηθευτές \n" 
-        		+ "πληροφορίες για αυτούς. Στα αποθέματα πληροφορίες για τη διαθεσιμότητα των προϊόντων. Ενώ στην \n"
-        		+ "καρτέλα γενικά πληροφορίες για το σύστημα.");
-        area.setFont(sansserifFontMedium);
-        GUI.setPaddingAtJTextArea(area);
-        JScrollPane pane = new JScrollPane(area);
-        
-        labelHtml.setFont(sansserifFontMedium);
-        labelHtml.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); 
-        centralPanel.add(labelHtml);
-        centralPanel.add(pane);
-		
-        //makeHtmlPage();
-        
-        centralPanel.setBackground(Color.LIGHT_GRAY);
-        
-        mainPanel.add(centralPanel,BorderLayout.CENTER);
+		centralPanel.setLayout(new GridLayout(2, 1, 10, 10));
+
+		labelHtml = new JLabel("<html>" + "<p><strong>Ξ ΞµΟΞΉΞµΟ‡ΟΞΌΞµΞ½Ξ± ΞµΟ†Ξ±ΟΞΌΞΏΞ³Ξ®Ο‚</strong></p>" + "<ol>"
+				+ "<li>Ξ‘ΟΟ‡ΞΉΞΊΞ® ΟƒΞµΞ»Ξ―Ξ΄Ξ±</li>" + "<li>ΞΞΏΟƒΟ„ΞΏΞ»ΟΞ³Ξ·ΟƒΞ·</li>" + "<li>Ξ¤ΞΉΞΌΞΏΞ»ΟΞ³ΞΉΞΏ</li>" + "<li>Ξ¤ΞΉΞΌΞΏΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏΟ‚</li>"
+				+ "<li>Ξ ΟΞΏΞΌΞ·ΞΈΞµΟ…Ο„Ξ­Ο‚</li>" + "<li>Ξ‘Ο€ΞΏΞΈΞ­ΞΌΞ±Ο„Ξ±</li>" + "<li>Ξ“ΞµΞ½ΞΉΞΊΞ¬</li>" + "</ol>" + "</html>");
+		GUI.setPaddingAtJLabel(labelHtml);
+
+		area = new JTextArea();
+		area.append(""
+				+ "Ξ£Ο„Ξ·Ξ½ Ξ±ΟΟ‡ΞΉΞΊΞ® ΟƒΞµΞ»Ξ―Ξ΄Ξ± Ο€Ξ»ΞΏΞ·Ξ³Ξ®ΟƒΞµ ΟƒΟ„ΞΉΟ‚ Ξ΄ΞΉΞ¬Ο†ΞΏΟΞµΟ‚ Ξ΄Ο…Ξ½Ξ±Ο„ΟΟ„Ξ·Ο„ΞµΟ‚ Ο„ΞΏΟ… ΟƒΟ…ΟƒΟ„Ξ®ΞΌΞ±Ο„ΞΏΟ‚, ΞΊΞ±ΞΈΟΟ‚ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ ΞΊΞ±ΞΉ Ο„Ξ± \n"
+				+ "ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ο„Ξ·Ο‚ ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚ Ο„Ξ± ΞΏΟ€ΞΏΞ―Ξ± Ξ΄ΟΞ½Ξ±Ξ½Ο„Ξ±ΞΉ Ξ½Ξ± Ξ±Ο€ΞΏΞΈΞ·ΞΊΞµΟ…Ο„ΞΏΟΞ½ ΟƒΞµ Ξ±ΟΟ‡ΞµΞ―ΞΏ. Ξ•Ο€ΞΉΞ»Ξ­Ξ³ΞΏΞ½Ο„Ξ±Ο‚ ΞΊΞΏΟƒΟ„ΞΏΞ»ΟΞ³Ξ·ΟƒΞ· \n"
+				+ "Ξ±Ξ½ΞΏΞ―Ξ³ΞµΞΉ ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ± ΟƒΟ„Ξ·Ξ½ ΞΏΟ€ΞΏΞ―Ξ± ΞΌΟ€ΞΏΟΞµΞ―Ο‚ Ξ½Ξ± Ξ²Ξ³Ξ¬Ξ»ΞµΞΉΟ‚ Ο„ΞΉΞΌΞ­Ο‚ Ξ³ΞΉΞ± Ο„Ξ± Ο€ΟΞΏΟΟΞ½Ο„Ξ± Ο„Ξ·Ο‚ ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚. Ξ£Ο„Ξ·Ξ½ \n"
+				+ "ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ± Ο„ΞΉΞΌΞΏΞ»ΟΞ³ΞΉΞΏ ΞΏΟΞ³Ξ±Ξ½ΟΞ½ΞµΞΉΟ‚ Ξ±Ο€ΟΞ»Ο…Ο„Ξ± ΞΊΞ±ΞΉ ΞµΟΞΊΞΏΞ»Ξ± Ο„Ξ± Ξ±Ο€Ξ±ΟΞ±Ξ―Ο„Ξ·Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± Ο„Ξ·Ξ½ Ξ­ΞΊΞ΄ΞΏΟƒΞ· ΞµΞ½ΟΟ‚ \n"
+				+ "Ο„ΞΉΞΌΞΏΞ»ΞΏΞ³Ξ―ΞΏΟ…. Ξ£Ο„ΞΏΞ½ Ο„ΞΉΞΌΞΏΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏ ΞΌΟ€ΞΏΟΞµΞ―Ο‚ Ξ½Ξ± Ξ²ΟΞµΞΉΟ‚ Ο„Ξ± Ο€ΟΞΏΟΟΞ½Ο„Ξ± Ο„Ξ·Ο‚ ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚. Ξ£Ο„ΞΏΟ…Ο‚ Ο€ΟΞΏΞΌΞ·ΞΈΞµΟ…Ο„Ξ­Ο‚ \n"
+				+ "Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ Ξ³ΞΉΞ± Ξ±Ο…Ο„ΞΏΟΟ‚. Ξ£Ο„Ξ± Ξ±Ο€ΞΏΞΈΞ­ΞΌΞ±Ο„Ξ± Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ Ξ³ΞΉΞ± Ο„Ξ· Ξ΄ΞΉΞ±ΞΈΞµΟƒΞΉΞΌΟΟ„Ξ·Ο„Ξ± Ο„Ο‰Ξ½ Ο€ΟΞΏΟΟΞ½Ο„Ο‰Ξ½. Ξ•Ξ½Ο ΟƒΟ„Ξ·Ξ½ \n"
+				+ "ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ± Ξ³ΞµΞ½ΞΉΞΊΞ¬ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ Ξ³ΞΉΞ± Ο„ΞΏ ΟƒΟΟƒΟ„Ξ·ΞΌΞ±.");
+		area.setFont(sansserifFontMedium);
+		GUI.setPaddingAtJTextArea(area);
+		JScrollPane pane = new JScrollPane(area);
+
+		labelHtml.setFont(sansserifFontMedium);
+		labelHtml.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		centralPanel.add(labelHtml);
+		centralPanel.add(pane);
+
+		// makeHtmlPage();
+
+		centralPanel.setBackground(Color.LIGHT_GRAY);
+
+		mainPanel.add(centralPanel, BorderLayout.CENTER);
 	}
-	
-	class writeInfoInFilebtnListener implements ActionListener
-	{
+
+	class writeInfoInFilebtnListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			FileWriterLocal.writeInfo();
-			GUI.showConfirmationWindow("Το αρχείο βρίσκεται στην επιφάνεια εργασίας, δείτε το.", 500);
+			GUI.showConfirmationWindow("Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ξ²ΟΞ―ΟƒΞΊΞµΟ„Ξ±ΞΉ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚, Ξ΄ΞµΞ―Ο„Ξµ Ο„ΞΏ.", 500);
 		}
-		
+
 	}
-	
-	class visitSiteListener implements ActionListener 
-	{
+
+	class visitSiteListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent ev) {
-		    if (Desktop.isDesktopSupported()) {
-		        try {
-		        	Desktop.getDesktop().browse(new URI("http://19172.byethost11.com"));
-			        } catch (IOException e) { 
-			        	e.printStackTrace();
-			        } catch (URISyntaxException e) {
-						e.printStackTrace();
-					}
-		    	} else { 
-		    		
-		    	}
-		}	
+			if (Desktop.isDesktopSupported()) {
+				try {
+					Desktop.getDesktop().browse(new URI("http://19172.byethost11.com"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
+			} else {
+
+			}
+		}
 	}
-	
-	class btnReturnListener implements ActionListener
-	{
+
+	class btnReturnListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			setVisible(false);
-			dispose(); 
+			dispose();
 			main_GUI.setVisible(true);
-			
+
 		}
-		
+
 	}
-	
-	public void makeMyFonts()
-	{
+
+	public void makeMyFonts() {
 		serifFontBig = new Font("serif", Font.BOLD, 30);
 		sansserifFontMedium = new Font("Sans Serif", Font.PLAIN, 20);
 		serifFont = new Font("serif", Font.BOLD, 22);
-		serifFontSmall = new Font("serif", Font.ITALIC|Font.BOLD, 17);
-		sansSerifFontSmall = new Font("Sans Serif", Font.ITALIC|Font.BOLD, 17);
+		serifFontSmall = new Font("serif", Font.ITALIC | Font.BOLD, 17);
+		sansSerifFontSmall = new Font("Sans Serif", Font.ITALIC | Font.BOLD, 17);
 	}
 
 }

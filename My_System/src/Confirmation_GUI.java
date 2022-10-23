@@ -1,7 +1,16 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
 public class Confirmation_GUI extends JFrame{
 	private JPanel panel,centralPanel,northPanel;
 	private JButton buttonOK;
@@ -12,7 +21,7 @@ public class Confirmation_GUI extends JFrame{
 	
 	public Confirmation_GUI(String message)
 	{
-		super("Μήνυμα επιβεβαίωσης");
+		super("ΞΞ®Ξ½Ο…ΞΌΞ± ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚");
 		this.message = message;
 		makeFrame();
 	}

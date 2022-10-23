@@ -1,16 +1,27 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
- * Η κλάση της οποίας τα αντικείμενα που θα δημιουργηθούν θα αποτελούν την κυρίως γραφική διασύνδεση
- * με το χρήστη (GUI) από όπου θα έχει πρόσβαση στις υπόλοιπες λειτουργίες-καρτέλες-παράθυρα
+ * Ξ— ΞΊΞ»Ξ¬ΟƒΞ· Ο„Ξ·Ο‚ ΞΏΟ€ΞΏΞ―Ξ±Ο‚ Ο„Ξ± Ξ±Ξ½Ο„ΞΉΞΊΞµΞ―ΞΌΞµΞ½Ξ± Ο€ΞΏΟ… ΞΈΞ± Ξ΄Ξ·ΞΌΞΉΞΏΟ…ΟΞ³Ξ·ΞΈΞΏΟΞ½ ΞΈΞ± Ξ±Ο€ΞΏΟ„ΞµΞ»ΞΏΟΞ½ Ο„Ξ·Ξ½ ΞΊΟ…ΟΞ―Ο‰Ο‚ Ξ³ΟΞ±Ο†ΞΉΞΊΞ® Ξ΄ΞΉΞ±ΟƒΟΞ½Ξ΄ΞµΟƒΞ·
+ * ΞΌΞµ Ο„ΞΏ Ο‡ΟΞ®ΟƒΟ„Ξ· (GUI) Ξ±Ο€Ο ΟΟ€ΞΏΟ… ΞΈΞ± Ξ­Ο‡ΞµΞΉ Ο€ΟΟΟƒΞ²Ξ±ΟƒΞ· ΟƒΟ„ΞΉΟ‚ Ο…Ο€ΟΞ»ΞΏΞΉΟ€ΞµΟ‚ Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³Ξ―ΞµΟ‚-ΞΊΞ±ΟΟ„Ξ­Ξ»ΞµΟ‚-Ο€Ξ±ΟΞ¬ΞΈΟ…ΟΞ±
  */
+@SuppressWarnings("serial")
 public class Main_GUI extends JFrame {
 	private JPanel mainPanel,northPanel,southPanel,westPanel,centralPanel;
 	//fonts
@@ -30,7 +41,7 @@ public class Main_GUI extends JFrame {
 	private JButton visitDocumentation;
 	
 	public Main_GUI()  {
-		super("Χρώματα");
+		super("Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		makeFrame();
 	}
 	
@@ -99,33 +110,33 @@ public class Main_GUI extends JFrame {
 		GUI.setPadding(westPanel);
 		westPanel.setLayout(new BoxLayout(westPanel,BoxLayout.Y_AXIS));
 
-		infoLabel1 = new JLabel("Επωνυμία επιχείρησης: Χρώματα");
+		infoLabel1 = new JLabel("Ξ•Ο€Ο‰Ξ½Ο…ΞΌΞ―Ξ± ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚: Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		infoLabel1.setFont(serifFont);
 		infoLabel1.setForeground(Color.white);
-		infoLabel2 = new JLabel("Τηλ. 24670 24670");
+		infoLabel2 = new JLabel("Ξ¤Ξ·Ξ». 24670 24670");
 		infoLabel2.setFont(serifFont);
 		infoLabel2.setForeground(Color.white);
-		infoLabel3 = new JLabel("Διεύθυνση: τάδε");
+		infoLabel3 = new JLabel("Ξ”ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·: Ο„Ξ¬Ξ΄Ξµ");
 		infoLabel3.setFont(serifFont);
 		infoLabel3.setForeground(Color.white);
-		infoLabel4 = new JLabel("Περιοχή: Θεσσαλονίκη, 11111");
+		infoLabel4 = new JLabel("Ξ ΞµΟΞΉΞΏΟ‡Ξ®: ΞΞµΟƒΟƒΞ±Ξ»ΞΏΞ½Ξ―ΞΊΞ·, 11111");
 		infoLabel4.setFont(serifFont);
 		infoLabel4.setForeground(Color.white);
-		writeInfoInFile = new JButton("<html>Αποθήκευσε τις πληροφορίες σε <br>αρχείο στην επιφάνεια εργασίας</html>");
+		writeInfoInFile = new JButton("<html>Ξ‘Ο€ΞΏΞΈΞ®ΞΊΞµΟ…ΟƒΞµ Ο„ΞΉΟ‚ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ ΟƒΞµ <br>Ξ±ΟΟ‡ΞµΞ―ΞΏ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚</html>");
 		writeInfoInFile.setFont(sansSerifFontSmall);
 		writeInfoInFile.setBackground(Color.green);
 		
 		writeInfoInFilebtnListener writeInfoInFilebtnlistener = new writeInfoInFilebtnListener();
 		writeInfoInFile.addActionListener(writeInfoInFilebtnlistener);
 		
-		visitSite = new JButton("<html>Επισκέψου την ιστοσελίδα</html>");
+		visitSite = new JButton("<html>Ξ•Ο€ΞΉΟƒΞΊΞ­ΟΞΏΟ… Ο„Ξ·Ξ½ ΞΉΟƒΟ„ΞΏΟƒΞµΞ»Ξ―Ξ΄Ξ±</html>");
 		visitSite.setFont(sansSerifFontSmall);
 		visitSite.setBackground(Color.magenta);
 		
 		visitSiteListener visitSitelistener = new visitSiteListener();
 		visitSite.addActionListener(visitSitelistener);
 		
-		visitDocumentation = new JButton("<html>Δες την τεκμηρίωση του λογισμικού</html>");
+		visitDocumentation = new JButton("<html>Ξ”ΞµΟ‚ Ο„Ξ·Ξ½ Ο„ΞµΞΊΞΌΞ·ΟΞ―Ο‰ΟƒΞ· Ο„ΞΏΟ… Ξ»ΞΏΞ³ΞΉΟƒΞΌΞΉΞΊΞΏΟ</html>");
 		visitDocumentation.setFont(sansSerifFontSmall);
 		visitDocumentation.setBackground(Color.magenta);
 		
@@ -154,40 +165,40 @@ public class Main_GUI extends JFrame {
 		GUI.setPadding(centralPanel);
 		centralPanel.setLayout(new GridLayout(4,2,10,10));
 		
-		btn1 = new JButton("Τιμολόγηση");
+		btn1 = new JButton("Ξ¤ΞΉΞΌΞΏΞ»ΟΞ³Ξ·ΟƒΞ·");
 		btn1.setFont(serifFontBig);
 		btn1Listener btn1listener = new btn1Listener();
 		btn1.addActionListener(btn1listener);
 		
-		btn2 = new JButton("Τιμολόγιο");
+		btn2 = new JButton("Ξ¤ΞΉΞΌΞΏΞ»ΟΞ³ΞΉΞΏ");
 		btn2.setFont(serifFontBig);
 		btn2Listener btn2listener = new btn2Listener();
 		btn2.addActionListener(btn2listener);
 		
-		btn3 = new JButton("Τιμοκατάλογος");
+		btn3 = new JButton("Ξ¤ΞΉΞΌΞΏΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏΟ‚");
 		btn3.setFont(serifFontBig);
 		btn3Listener btn3listener = new btn3Listener();
 		btn3.addActionListener(btn3listener);
 		
-		btn4 = new JButton("Προμηθευτές");
+		btn4 = new JButton("Ξ ΟΞΏΞΌΞ·ΞΈΞµΟ…Ο„Ξ­Ο‚");
 		btn4.setFont(serifFontBig);
 		btn4Listener btn4listener = new btn4Listener();
 		btn4.addActionListener(btn4listener);
 		
-		btn5 = new JButton("Αποθέματα");
+		btn5 = new JButton("Ξ‘Ο€ΞΏΞΈΞ­ΞΌΞ±Ο„Ξ±");
 		btn5.setFont(serifFontBig);
 		
-		btn6 = new JButton("Γενικά");
+		btn6 = new JButton("Ξ“ΞµΞ½ΞΉΞΊΞ¬");
 		btn6.setFont(serifFontBig);
 		btn6Listener btn6listener = new btn6Listener();
 		btn6.addActionListener(btn6listener);
 		
-		btn7 = new JButton("Έσοδα-Έξοδα");
+		btn7 = new JButton("ΞΟƒΞΏΞ΄Ξ±-ΞΞΎΞΏΞ΄Ξ±");
 		btn7.setFont(serifFontBig);
 		btn7Listener btn7listener = new btn7Listener();
 		btn7.addActionListener(btn7listener);
 		
-		btn8 = new JButton("Αριθμομηχανή");
+		btn8 = new JButton("Ξ‘ΟΞΉΞΈΞΌΞΏΞΌΞ·Ο‡Ξ±Ξ½Ξ®");
 		btn8.setFont(serifFontBig);
 		btn8Listener btn8listener = new btn8Listener();
 		btn8.addActionListener(btn8listener);
@@ -256,7 +267,7 @@ public class Main_GUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			FileWriterLocal.writeInfo();
-			GUI.showConfirmationWindow("Το αρχείο βρίσκεται στην επιφάνεια εργασίας, δείτε το.",500);
+			GUI.showConfirmationWindow("Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ξ²ΟΞ―ΟƒΞΊΞµΟ„Ξ±ΞΉ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚, Ξ΄ΞµΞ―Ο„Ξµ Ο„ΞΏ.",500);
 		}
 		
 	}
@@ -281,7 +292,6 @@ public class Main_GUI extends JFrame {
 			try {
 				new Prices_GUI(main_GUI);
 			} catch (ClassNotFoundException | SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}

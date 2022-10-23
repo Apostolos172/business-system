@@ -5,10 +5,12 @@ import java.sql.SQLException;
  */
 public class Main {
 
+	// ERP App
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 		new Main_GUI();
 		testing();
+		
 		
 	}
 	

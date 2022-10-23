@@ -1,12 +1,30 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
 public class Prices_GUI extends JFrame {
 	private JPanel mainPanel,northPanel,southPanel,westPanel,centralPanel,centralCentralPanel;
 	//fonts
@@ -34,7 +52,7 @@ public class Prices_GUI extends JFrame {
 	private JButton deletebtn;
 	
 	public Prices_GUI(Main_GUI main_GUI) throws ClassNotFoundException, SQLException  {
-		super("Χρώματα");
+		super("Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		this.main_GUI = main_GUI;
 		main_GUI.setVisible(false);
 		this.createTheStockList();
@@ -46,7 +64,7 @@ public class Prices_GUI extends JFrame {
 		try {
 			this.menu = new StockList();
 		} catch(SQLException e) {
-			new Confirmation_GUI("Δεν μπορεί να δημιουγηθεί σύνδεση με την βάση δεδομένων");
+			new Confirmation_GUI("Ξ”ΞµΞ½ ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± Ξ΄Ξ·ΞΌΞΉΞΏΟ…Ξ³Ξ·ΞΈΞµΞ― ΟƒΟΞ½Ξ΄ΞµΟƒΞ· ΞΌΞµ Ο„Ξ·Ξ½ Ξ²Ξ¬ΟƒΞ· Ξ΄ΞµΞ΄ΞΏΞΌΞ­Ξ½Ο‰Ξ½");
 		} finally {
 			setVisible(false);
 			dispose(); 
@@ -119,33 +137,33 @@ public class Prices_GUI extends JFrame {
 		GUI.setPadding(westPanel);
 		westPanel.setLayout(new BoxLayout(westPanel,BoxLayout.Y_AXIS));
 
-		infoLabel1 = new JLabel("Επωνυμία επιχείρησης: Χρώματα");
+		infoLabel1 = new JLabel("Ξ•Ο€Ο‰Ξ½Ο…ΞΌΞ―Ξ± ΞµΟ€ΞΉΟ‡ΞµΞ―ΟΞ·ΟƒΞ·Ο‚: Ξ§ΟΟΞΌΞ±Ο„Ξ±");
 		infoLabel1.setFont(serifFont);
 		infoLabel1.setForeground(Color.white);
-		infoLabel2 = new JLabel("Τηλ. 24670 24670");
+		infoLabel2 = new JLabel("Ξ¤Ξ·Ξ». 24670 24670");
 		infoLabel2.setFont(serifFont);
 		infoLabel2.setForeground(Color.white);
-		infoLabel3 = new JLabel("Διεύθυνση: τάδε");
+		infoLabel3 = new JLabel("Ξ”ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·: Ο„Ξ¬Ξ΄Ξµ");
 		infoLabel3.setFont(serifFont);
 		infoLabel3.setForeground(Color.white);
-		infoLabel4 = new JLabel("Περιοχή: Θεσσαλονίκη, 11111");
+		infoLabel4 = new JLabel("Ξ ΞµΟΞΉΞΏΟ‡Ξ®: ΞΞµΟƒΟƒΞ±Ξ»ΞΏΞ½Ξ―ΞΊΞ·, 11111");
 		infoLabel4.setFont(serifFont);
 		infoLabel4.setForeground(Color.white);
-		writeInfoInFile = new JButton("<html>Αποθήκευσε τις πληροφορίες σε <br>αρχείο στην επιφάνεια εργασίας</html>");
+		writeInfoInFile = new JButton("<html>Ξ‘Ο€ΞΏΞΈΞ®ΞΊΞµΟ…ΟƒΞµ Ο„ΞΉΟ‚ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ ΟƒΞµ <br>Ξ±ΟΟ‡ΞµΞ―ΞΏ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚</html>");
 		writeInfoInFile.setFont(sansSerifFontSmall);
 		writeInfoInFile.setBackground(Color.green);
 		
 		writeInfoInFilebtnListener writeInfoInFilebtnlistener = new writeInfoInFilebtnListener();
 		writeInfoInFile.addActionListener(writeInfoInFilebtnlistener);
 		
-		visitSite = new JButton("<html>Επισκέψου την ιστοσελίδα</html>");
+		visitSite = new JButton("<html>Ξ•Ο€ΞΉΟƒΞΊΞ­ΟΞΏΟ… Ο„Ξ·Ξ½ ΞΉΟƒΟ„ΞΏΟƒΞµΞ»Ξ―Ξ΄Ξ±</html>");
 		visitSite.setFont(sansSerifFontSmall);
 		visitSite.setBackground(Color.magenta);
 		
 		visitSiteListener visitSitelistener = new visitSiteListener();
 		visitSite.addActionListener(visitSitelistener);
 		
-		btnret = new JButton("Επιστροφή στην αρχική καρτέλα");
+		btnret = new JButton("Ξ•Ο€ΞΉΟƒΟ„ΟΞΏΟ†Ξ® ΟƒΟ„Ξ·Ξ½ Ξ±ΟΟ‡ΞΉΞΊΞ® ΞΊΞ±ΟΟ„Ξ­Ξ»Ξ±");
 		btnret.setFont(sansSerifFontSmall);
 		btnReturnListener btn1listener = new btnReturnListener();
 		btnret.addActionListener(btn1listener);
@@ -181,7 +199,7 @@ public class Prices_GUI extends JFrame {
 		centralCentralPanel.setLayout(new GridLayout(1,3,10,10));
         
 		//centralNorthPanel
-		search = new JButton("Αναζήτησε προϊόν");
+		search = new JButton("Ξ‘Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞµ Ο€ΟΞΏΟΟΞ½");
 		search.setFont(serifFont);
 		searchListener searchlistener = new searchListener();
 		search.addActionListener(searchlistener);
@@ -195,7 +213,7 @@ public class Prices_GUI extends JFrame {
 		searchKeyListener searchKeylistener = new searchKeyListener();
 		product.addKeyListener(searchKeylistener);
 		
-		fullScreenButton = new JButton("Πλήρης Οθονή");
+		fullScreenButton = new JButton("Ξ Ξ»Ξ®ΟΞ·Ο‚ ΞΞΈΞΏΞ½Ξ®");
 		fullScreenButton.setFont(serifFont);
 		fullScreenButtonListener fullScreenButtonlistener = new fullScreenButtonListener();
 		fullScreenButton.addActionListener(fullScreenButtonlistener);
@@ -209,7 +227,7 @@ public class Prices_GUI extends JFrame {
 		
         areaProducts = new JTextArea();
         areaProducts.setFont(sansserifFontMedium);
-        areaProducts.append("Προϊόντα \n\n");
+        areaProducts.append("Ξ ΟΞΏΟΟΞ½Ο„Ξ± \n\n");
         
         for(Product product: menu.getProducts())
         {
@@ -226,7 +244,7 @@ public class Prices_GUI extends JFrame {
         
         areaInfo = new JTextArea();
         areaInfo.setFont(sansserifFontMedium);
-        areaInfo.append("Πληροφορίες \n\n");
+        areaInfo.append("Ξ Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ \n\n");
         
         for(Product product: menu.getProducts())
         {
@@ -243,12 +261,12 @@ public class Prices_GUI extends JFrame {
         
         areaPrices = new JTextArea();
         areaPrices.setFont(sansserifFontMedium);
-        areaPrices.append("Τιμές \n\n");
+        areaPrices.append("Ξ¤ΞΉΞΌΞ­Ο‚ \n\n");
         
         for(Product product: menu.getProducts())
         {
         	count++;
-        	areaPrices.append(count + ". " + product.getFinalPrice() + " ευρώ \n");
+        	areaPrices.append(count + ". " + product.getFinalPrice() + " ΞµΟ…ΟΟ \n");
         }
         
         areaPrices.setEditable(false);
@@ -261,7 +279,7 @@ public class Prices_GUI extends JFrame {
         
         //centralSouthPanel
         
-		productFoundLabel = new JLabel("Το προϊόν");
+		productFoundLabel = new JLabel("Ξ¤ΞΏ Ο€ΟΞΏΟΟΞ½");
 		productFoundLabel.setFont(serifFont);
 		
 		productFoundField = new JTextField(40);
@@ -270,7 +288,7 @@ public class Prices_GUI extends JFrame {
 		productFoundField.setEditable(false);
 		productFoundField.setBackground(Color.green);
 		
-		deletebtn = new JButton("Διέγραψέ το");
+		deletebtn = new JButton("Ξ”ΞΉΞ­Ξ³ΟΞ±ΟΞ­ Ο„ΞΏ");
 		deletebtnListener deletebtnlistener = new deletebtnListener();
 		deletebtn.addActionListener(deletebtnlistener);
 		
@@ -294,7 +312,7 @@ public class Prices_GUI extends JFrame {
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			AreYouSure_GUI areYouSure = new AreYouSure_GUI("Σίγουρα θέλεις να διαγραφεί το προϊόν;",product.getText());
+			AreYouSure_GUI areYouSure = new AreYouSure_GUI("Ξ£Ξ―Ξ³ΞΏΟ…ΟΞ± ΞΈΞ­Ξ»ΞµΞΉΟ‚ Ξ½Ξ± Ξ΄ΞΉΞ±Ξ³ΟΞ±Ο†ΞµΞ― Ο„ΞΏ Ο€ΟΞΏΟΟΞ½;",product.getText());
 			areYouSure.setLocation(670, 500);
 		}
 	}
@@ -351,7 +369,6 @@ public class Prices_GUI extends JFrame {
 				info = menu.getInfoOfTheProductWithThisName("'" + nameOfProduct + "'");
 				productFoundField.setText(info);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -365,7 +382,6 @@ public class Prices_GUI extends JFrame {
 			try {
 				new PricesBig_GUI();
 			} catch (ClassNotFoundException | SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}	
@@ -377,7 +393,7 @@ public class Prices_GUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			FileWriterLocal.writeInfo();
-			GUI.showConfirmationWindow("Το αρχείο βρίσκεται στην επιφάνεια εργασίας, δείτε το.", 670);
+			GUI.showConfirmationWindow("Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ξ²ΟΞ―ΟƒΞΊΞµΟ„Ξ±ΞΉ ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ± ΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚, Ξ΄ΞµΞ―Ο„Ξµ Ο„ΞΏ.", 670);
 		}
 		
 	}
@@ -408,7 +424,7 @@ public class Prices_GUI extends JFrame {
 			setVisible(false);
 			dispose(); 
 			main_GUI.setVisible(true);
-			
+ 			
 		}
 		
 	}
